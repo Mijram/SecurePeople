@@ -1,0 +1,49 @@
+buildscript {
+    ext {
+        buildToolsVersion = "34.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+        ndkVersion = "25.1.8937393"
+        kotlinVersion = "1.8.0"
+    }
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+    }
+}
+
+// Forzar versiones de androidx compatibles con AGP 8.1.1
+// y Java 11 para evitar bug de jlink con JDK 21 + android-35+
+allprojects {
+    plugins.withId("com.android.library") {
+        android {
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_11
+                targetCompatibility JavaVersion.VERSION_11
+            }
+        }
+    }
+    configurations.all {
+        resolutionStrategy {
+            force "androidx.core:core:1.13.1"
+            force "androidx.core:core-ktx:1.13.1"
+            force "androidx.activity:activity:1.8.2"
+            force "androidx.activity:activity-ktx:1.8.2"
+            force "androidx.fragment:fragment:1.6.2"
+            force "androidx.fragment:fragment-ktx:1.6.2"
+            force "androidx.lifecycle:lifecycle-runtime:2.7.0"
+            force "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
+            force "androidx.lifecycle:lifecycle-viewmodel:2.7.0"
+            force "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0"
+        }
+    }
+}
+
+apply plugin: "com.facebook.react.rootproject"

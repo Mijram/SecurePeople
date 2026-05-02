@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Shield shape - SecurePeople logo -->
+    <path
+        android:fillColor="#E53935"
+        android:pathData="M54,18 L82,30 L82,54 C82,68 70,80 54,86 C38,80 26,68 26,54 L26,30 Z"/>
+    <!-- Letter S -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M46,42 C46,42 44,42 44,44 C44,46 46,47 50,48 C56,50 60,52 60,57 C60,62 56,65 50,65 C45,65 41,63 39,60 L43,57 C44,59 47,61 50,61 C53,61 55,60 55,57 C55,55 53,54 49,52 C43,50 39,48 39,43 C39,38 43,35 49,35 C53,35 57,37 59,40 L55,43 C54,41 52,39 49,39 C47,39 46,40 46,42 Z"/>
+</vector>

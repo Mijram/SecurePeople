@@ -172,6 +172,21 @@ router.post(
       const pool = getPool();
       const client = await pool.connect();
 
+      // Verify user exists
+      const userCheck = await client.query(
+        'SELECT id FROM users WHERE id = $1',
+        [req.user!.userId]
+      );
+
+      if (userCheck.rows.length === 0) {
+        client.release();
+        res.status(401).json({ 
+          error: 'Sesión expirada. Por favor, inicia sesión nuevamente.',
+          code: 'USER_NOT_FOUND'
+        });
+        return;
+      }
+
       const reportId = uuidv4();
       const result = await client.query(
         `INSERT INTO reports (id, user_id, description, category, danger_level, latitude, longitude, address)

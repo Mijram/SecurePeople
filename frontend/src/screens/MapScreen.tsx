@@ -43,6 +43,7 @@ type MainStackParamList = {
   CreateReport: undefined;
   ReportDetail: { reportId: string };
   Profile: undefined;
+  Feed: undefined;
 };
 
 export function MapScreen() {
@@ -149,6 +150,14 @@ export function MapScreen() {
         <Text style={styles.filterButtonText}>
           {filterCategory ? `🔍 ${filterCategory}` : '🔍 Filtrar'}
         </Text>
+      </TouchableOpacity>
+
+      {/* Feed button */}
+      <TouchableOpacity
+        style={styles.feedButton}
+        onPress={() => navigation.navigate('Feed')}
+      >
+        <Text style={styles.feedButtonText}>📱 Feed Social</Text>
       </TouchableOpacity>
 
       {/* Center button */}
@@ -386,6 +395,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(229, 57, 53, 0.15)',
   },
   filterButtonText: {
+    fontSize: 13,
+    color: Colors.textPrimary,
+    fontWeight: '500',
+  },
+  feedButton: {
+    position: 'absolute',
+    top: 150,
+    left: 16,
+    backgroundColor: 'rgba(13, 13, 13, 0.92)',
+    borderRadius: 20,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  feedButtonText: {
     fontSize: 13,
     color: Colors.textPrimary,
     fontWeight: '500',

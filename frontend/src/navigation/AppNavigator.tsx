@@ -14,6 +14,7 @@ import { MapScreen } from '../screens/MapScreen';
 import { CreateReportScreen } from '../screens/CreateReportScreen';
 import { ReportDetailScreen } from '../screens/ReportDetailScreen';
 import { ProfileScreen } from '../screens/ProfileScreen';
+import { FeedScreen } from '../screens/FeedScreen';
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -23,6 +24,7 @@ export type RootStackParamList = {
   CreateReport: undefined;
   ReportDetail: { reportId: string };
   Profile: undefined;
+  Feed: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -79,6 +81,11 @@ export function AppNavigator() {
             <Stack.Screen
               name="Profile"
               component={ProfileScreen}
+              options={{ animation: 'slide_from_right' }}
+            />
+            <Stack.Screen
+              name="Feed"
+              component={FeedScreen}
               options={{ animation: 'slide_from_right' }}
             />
           </>

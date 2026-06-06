@@ -4,9 +4,10 @@ import { newDb } from 'pg-mem';
 const db = newDb();
 
 // pg-mem supports the uuid-ossp extension natively
-db.public.interceptQueries(q => {
+db.public.interceptQueries((q: string | { sql: string }) => {
   // Allow CREATE EXTENSION queries to pass silently
-  if (/create\s+extension/i.test(q.sql)) {
+  const sql = typeof q === 'string' ? q : q.sql;
+  if (/create\s+extension/i.test(sql)) {
     return [];
   }
   return null;
